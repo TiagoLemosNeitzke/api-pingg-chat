@@ -1,8 +1,23 @@
 # TODO LIST
 
-- [ ] be able to register using github account
-    - [ ] if user already exists, just log them in
-    - [ ] if user does not exist, create a new account
+## Ideas
+- [ ] setup coderabbit for auto review of PR's
+- [ ] do we do in a way that people can self host it ? or just a SAAS ? or both ?
+    - [ ] if self hosted, we need to have docker on the project
+    
+    - [ ] idea for using ssh pingg.me
+    https://laravel-news.com/whisp-php-ssh-server
+    - [ ] in think i'll do everything in go, replicating this whisp-php-ssh-server to study go
+
+## Features
+
+- [ ] be able to sign up 
+    - [ ] server address
+    - [ ] username
+    - [ ] name
+    - [ ] email
+    - [ ] password
+    - [ ] ssh key pub ? passwordless ?
 - [ ] be able to delete account 4ever
     - [ ] delete all user data, messages, etc
     - [ ] if he owns any workspace it needs to point someone else as owner or delete the entire workspace
