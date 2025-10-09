@@ -13,11 +13,6 @@ class User extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'email',
-    ];
-
     protected function casts(): array
     {
         return [
