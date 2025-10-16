@@ -10,26 +10,21 @@ return new class () extends Migration
 {
     public function up(): void
     {
-        Schema::create('workspaces', function (Blueprint $table) {
+        Schema::create('channels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('owner_id')->constrained('users')->cascadeOnDelete();
-            $table->char('icon')->default('');
+            $table->string('short_id')->unique();
+            $table->char('icon')->default('');
             $table->string('name', 15);
             $table->string('description', 255)->nullable();
-            $table->timestamps();
-        });
-
-        Schema::table('user_workspace', function (Blueprint $table) {
             $table->foreignId('workspace_id')->constrained('workspaces')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->primary(['workspace_id', 'user_id']);
+            $table->boolean('is_private')->default(false);
+            $table->boolean('is_dm')->default(false);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('workspaces');
-        Schema::dropIfExists('user_workspace');
+        Schema::dropIfExists('channels');
     }
 };

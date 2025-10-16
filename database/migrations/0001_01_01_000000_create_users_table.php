@@ -15,7 +15,7 @@ return new class () extends Migration
             $table->char('icon');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('username')->unique();
+            $table->string('username', 20)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
