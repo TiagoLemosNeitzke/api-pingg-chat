@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-use App\Brain\User\Tasks\CreateUserTask;
+use App\Brain\Chat\Tasks\CreateUserTask;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
 
@@ -10,12 +10,14 @@ use function Pest\Laravel\assertDatabaseHas;
 
 it('should be able to create a new user', function (): void {
     CreateUserTask::dispatch([
+        'icon'     => '',
         'name'     => 'Valid Name',
         'username' => 'validusername',
         'email'    => 'valid@email.com',
     ]);
 
     assertDatabaseHas('users', [
+        'icon'     => '',
         'name'     => 'Valid Name',
         'username' => 'validusername',
         'email'    => 'valid@email.com',
@@ -24,12 +26,14 @@ it('should be able to create a new user', function (): void {
 
 it('should return the created user', function (): void {
     $task = CreateUserTask::dispatchSync([
+        'icon'     => '',
         'name'     => 'Valid Name',
         'username' => 'validusername',
         'email'    => 'valid@email.com',
     ]);
 
     expect($task->user)->toBeInstanceOf(User::class)
+        ->and($task->user->icon)->toBe('')
         ->and($task->user->name)->toBe('Valid Name')
         ->and($task->user->username)->toBe('validusername')
         ->and($task->user->email)->toBe('valid@email.com');
@@ -37,6 +41,32 @@ it('should return the created user', function (): void {
 
 // ------------------------------------------------------------------------------
 // Validations
+
+// --------------------------------------------------
+// Icon
+
+test('icon max length is 1', function (): void {
+    expect(fn () => CreateUserTask::dispatchSync([
+        'icon'     => 'ab',
+        'name'     => 'Valid Name',
+        'username' => 'validusername',
+        'email'    => 'joe@doe.com',
+    ]))
+        ->toThrow(
+            ValidationException::class,
+            __('validation.max.string', ['attribute' => 'icon', 'max' => 1])
+        );
+});
+
+test('icon can be null', function (): void {
+    expect(fn () => CreateUserTask::dispatchSync([
+        'name'     => 'Valid Name',
+        'username' => 'validusername',
+        'email'    => 'joe@doe.com',
+    ]))
+        ->not
+        ->toThrow(ValidationException::class);
+});
 
 // --------------------------------------------------
 // Name

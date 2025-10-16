@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-use App\Brain\User\Processes\CreateUserProcess;
-use App\Brain\User\Tasks\CreateUserTask;
-use App\Brain\User\Tasks\SendWelcomeEmailTask;
+use App\Brain\Chat\Processes\CreateUserProcess;
+use App\Brain\Chat\Tasks\CreateUserTask;
+use App\Brain\Chat\Tasks\SendWelcomeEmailTask;
 
 test('check list of tasks', function (): void {
     $process = new CreateUserProcess();

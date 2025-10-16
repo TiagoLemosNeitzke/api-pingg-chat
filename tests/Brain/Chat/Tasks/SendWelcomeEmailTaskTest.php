@@ -9,7 +9,7 @@ it('should send WelcomeNotification to the given user', function (): void {
     Notification::fake();
     $user = User::factory()->create();
 
-    App\Brain\User\Tasks\SendWelcomeEmailTask::dispatchSync([
+    App\Brain\Chat\Tasks\SendWelcomeEmailTask::dispatchSync([
         'user' => $user,
     ]);
 

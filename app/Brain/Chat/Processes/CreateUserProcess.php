@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace App\Brain\User\Processes;
+namespace App\Brain\Chat\Processes;
 
-use App\Brain\User\Tasks\CreateUserTask;
-use App\Brain\User\Tasks\SendWelcomeEmailTask;
+use App\Brain\Chat\Tasks\CreateUserTask;
+use App\Brain\Chat\Tasks\SendWelcomeEmailTask;
 use Brain\Process;
 
 class CreateUserProcess extends Process

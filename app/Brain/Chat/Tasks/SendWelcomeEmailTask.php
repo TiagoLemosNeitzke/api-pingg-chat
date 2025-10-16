@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace App\Brain\User\Tasks;
+namespace App\Brain\Chat\Tasks;
 
 use App\Models\User;
 use Brain\Task;
