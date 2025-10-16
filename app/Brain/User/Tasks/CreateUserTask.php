@@ -18,6 +18,15 @@ use Brain\Task;
  */
 class CreateUserTask extends Task
 {
+    public function rules(): array
+    {
+        return [
+            'name'     => ['required', 'min:3', 'max:100'],
+            'username' => ['required', 'min:3', 'max:100', 'unique:users,username', 'alpha_dash'],
+            'email'    => ['required', 'email', 'max:100', 'unique:users,email'],
+        ];
+    }
+
     public function handle(): self
     {
         $this->user = User::query()
