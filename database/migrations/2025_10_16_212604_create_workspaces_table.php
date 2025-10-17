@@ -19,7 +19,7 @@ return new class () extends Migration
             $table->timestamps();
         });
 
-        Schema::table('user_workspace', function (Blueprint $table) {
+        Schema::create('user_workspace', function (Blueprint $table) {
             $table->foreignId('workspace_id')->constrained('workspaces')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->primary(['workspace_id', 'user_id']);

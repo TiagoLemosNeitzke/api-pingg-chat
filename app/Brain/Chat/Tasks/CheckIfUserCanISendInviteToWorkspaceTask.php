@@ -11,8 +11,8 @@ use Illuminate\Validation\ValidationException;
 /**
  * Task CheckIfUserCanISendInviteToWorkspaceTask
  *
- * @property-read string $workspace_id
- * @property-read string $invited_by
+ * @property-read int $workspace_id
+ * @property-read int $invited_by
  */
 class CheckIfUserCanISendInviteToWorkspaceTask extends Task
 {

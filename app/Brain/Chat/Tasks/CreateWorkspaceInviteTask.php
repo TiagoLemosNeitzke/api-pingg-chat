@@ -10,8 +10,8 @@ use Brain\Task;
 /**
  * Task CreateWorkspaceInviteTask
  *
- * @property-read string $workspace_id
- * @property-read string $invited_by
+ * @property-read int $workspace_id
+ * @property-read int $invited_by
  * @property-read string $username
  *
  * @property WorkspaceInvite $invite
