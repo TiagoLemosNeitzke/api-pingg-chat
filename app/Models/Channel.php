@@ -17,4 +17,9 @@ class Channel extends Model
     {
         return $this->belongsTo(Workspace::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

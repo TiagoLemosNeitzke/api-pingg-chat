@@ -21,6 +21,14 @@ return new class () extends Migration
             $table->boolean('is_dm')->default(false);
             $table->timestamps();
         });
+
+        Schema::create('channel_user', function (Blueprint $table) {
+            $table->foreignId('channel_id')->constrained('channels')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->timestamps();
+
+            $table->unique(['channel_id', 'user_id']);
+        });
     }
 
     public function down(): void
